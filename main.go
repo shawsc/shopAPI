@@ -19,9 +19,14 @@ func main() {
 	})
 
 	r.GET("/product", routes.GetProduct)        // Form input with request param
+	r.GET("/product/:id", routes.GetProduct)    // JSON input
 	r.GET("/products", routes.BatchGetProducts) // JSON array of ids
 
-	r.POST("/product", routes.CreateProduct)
+	r.POST("/product", routes.CreateProduct) // JSON input
+
+	r.PATCH("/product/:id", routes.UpdateProduct) // JSON input
+
+	r.DELETE("/product/:id", routes.DeleteProduct) // Form input
 
 	r.Run()
 }
