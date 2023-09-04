@@ -28,7 +28,9 @@ func main() {
 
 	// Review routes
 	r.GET("/reviews/:id", routes.GetReview)
+	r.GET("/reviews", routes.GetReview)
 	r.GET("/reviewsbyproduct/:product_id", routes.GetReviewsByProductID)
+	r.GET("/reviewsbyproduct", routes.GetReviewsByProductID)
 	r.POST("/reviews", routes.CreateReview)
 	r.PATCH("/reviews/:id", routes.UpdateReview)
 	r.DELETE("/reviews/:id", routes.DeleteReview)

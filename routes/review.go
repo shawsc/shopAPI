@@ -97,10 +97,17 @@ func GetReviewsByProductID(c *gin.Context) {
 	var input GetReviewsByProductInput
 
 	// Validate input
-	err := c.ShouldBindJSON(&input)
+	err := c.Bind(&input) // form
 	if err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": "malformed request " + err.Error()})
 		return
+	}
+	if input.ProductID == 0 {
+		err = c.ShouldBindJSON(&input) // JSON
+		if err != nil {
+			c.JSON(http.StatusBadRequest, gin.H{"error": "malformed request " + err.Error()})
+			return
+		}
 	}
 
 	// Validate product exists
