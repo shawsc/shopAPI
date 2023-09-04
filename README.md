@@ -1,0 +1,1 @@
+I wrote this to practice Go.  As a manager I don't get much practice :(
