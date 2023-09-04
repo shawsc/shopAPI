@@ -18,8 +18,8 @@ func main() {
 		c.JSON(http.StatusOK, gin.H{"data": "hello world"})
 	})
 
-	r.GET("/product/:id", routes.GetProduct)
-	r.GET("/product", routes.GetAllProducts)
+	r.GET("/product", routes.GetProduct)        // Form input with request param
+	r.GET("/products", routes.BatchGetProducts) // JSON array of ids
 
 	r.POST("/product", routes.CreateProduct)
 
