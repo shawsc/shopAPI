@@ -13,7 +13,7 @@ func ConnectDatabase() {
 		panic("Failed to connect to database")
 	}
 
-	err = database.AutoMigrate(&Product{})
+	err = database.AutoMigrate(&Product{}, &Review{})
 	if err != nil {
 		panic("Failed to initialize tables")
 	}

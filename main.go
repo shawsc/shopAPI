@@ -18,15 +18,20 @@ func main() {
 		c.JSON(http.StatusOK, gin.H{"data": "hello world"})
 	})
 
-	r.GET("/product", routes.GetProduct)        // Form input with request param
-	r.GET("/product/:id", routes.GetProduct)    // JSON input
-	r.GET("/products", routes.BatchGetProducts) // JSON array of ids
+	// Product routes
+	r.GET("/products/", routes.GetProduct)          // Form input with request param
+	r.GET("/products/:id", routes.GetProduct)       // JSON input
+	r.GET("/products", routes.BatchGetProducts)     // JSON array of ids
+	r.POST("/products", routes.CreateProduct)       // JSON input
+	r.PATCH("/products/:id", routes.UpdateProduct)  // JSON input
+	r.DELETE("/products/:id", routes.DeleteProduct) // Form input
 
-	r.POST("/product", routes.CreateProduct) // JSON input
-
-	r.PATCH("/product/:id", routes.UpdateProduct) // JSON input
-
-	r.DELETE("/product/:id", routes.DeleteProduct) // Form input
+	// Review routes
+	r.GET("/reviews/:id", routes.GetReview)
+	r.GET("/reviewsbyproduct/:product_id", routes.GetReviewsByProductID)
+	r.POST("/reviews", routes.CreateReview)
+	r.PATCH("/reviews/:id", routes.UpdateReview)
+	r.DELETE("/reviews/:id", routes.DeleteReview)
 
 	r.Run()
 }
